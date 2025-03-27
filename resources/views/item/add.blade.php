@@ -12,9 +12,9 @@
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                       @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                       @endforeach
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
                     </ul>
                 </div>
             @endif
@@ -35,12 +35,17 @@
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
+                            <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細">
+                        </div>
+                        <div class="form-group">
+                            <label for="money">金額</label>
+                            <input type="text" class="form-control" id="money" name="money" placeholder="金額">
                         </div>
                     </div>
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">登録</button>
+                        <button type="submit" class="btn btn-primary">登録キャンセル</button>
                     </div>
                 </form>
             </div>
@@ -49,6 +54,12 @@
 @stop
 
 @section('css')
+                    <style>
+                        .card-footer {
+                            display: flex; /* ボタンを横並びに */ 
+                            gap: 25px; /* ボタン間のスペースを設定 */
+                        }
+                    </style>
 @stop
 
 @section('js')
