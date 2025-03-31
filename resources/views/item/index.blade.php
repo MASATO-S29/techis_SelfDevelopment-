@@ -21,7 +21,7 @@
                             </div>
                             <!-- 条件検索ボタン -->
                             <div class="input-group-append">
-                                <a href="{{ url('items/show') }}" class="btn btn-default">条件検索</a>
+                                <a href="{{ url('items/search') }}" class="btn btn-default">条件検索</a>
                             </div>
                             <div class="input-group-append">
                                 <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
