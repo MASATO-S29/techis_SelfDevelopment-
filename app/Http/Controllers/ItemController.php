@@ -29,8 +29,7 @@ class ItemController extends Controller
 
         return view('item.index', compact('items'));
         
-    }
-     
+    } 
     
         //     // 商品一覧ページに渡す
         //     return view('items.index', compact('items'));
@@ -71,13 +70,6 @@ class ItemController extends Controller
                 return redirect('/items');
             }
 
-
-    // 条件検索ボタン追加してボタンをクリック後条件検索画面へ遷移
-    public function show()
-    {
-        return view('item.show');
-    }
-
 // //  編集ボタン
     public function edit($id)
     {
@@ -98,4 +90,9 @@ class ItemController extends Controller
     
          return redirect('/items');  // 商品一覧画面にリダイレクト
         }
+        // 条件検索ボタン追加してボタンをクリック後条件検索画面へ遷移
+        public function search()
+            {
+                      return view('item.search');
+            }
 } 

@@ -29,5 +29,6 @@ Route::prefix('items')->group(function () {
     Route::get('/item', [App\Http\Controllers\ItemController::class, 'item']);
     Route::get('/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);/*編集ボタン*/
     Route::post('/update/{id}', [App\Http\Controllers\ItemController::class, 'update']); /*編集反映*/ 
-    Route::get('/show', [App\Http\Controllers\ItemController::class, 'show']);/*条件検索画面への遷移*/
-});
+    Route::get('/search', [App\Http\Controllers\ItemController::class, 'search']);/*条件検索画面への遷移*/
+//  Route:post('/filter,[App\Http\Controllers\ItemController::class, 'filter']')/* 条件検索結果を表示するルートを追加*/
+ });
