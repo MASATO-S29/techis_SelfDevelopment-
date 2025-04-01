@@ -49,9 +49,9 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit"  class="cancel-button">編集破棄</button>
+                        <button type="submit"  class="btn btn-primary">編集破棄</button>
                         <!-- <a href = "{{ url('items') }}"  class="cancel-button">編集破棄</a> -->
-                        <button type="submit"  class="cancel-button">編集完了</button>
+                        <button type="submit"  class="btn btn-primary">編集完了</button>
                     </div>
                 </form>
             </div>

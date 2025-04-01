@@ -45,7 +45,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">登録</button>
-                        <a href="{{ url('/items')}}" class="btn btn-warning">登録キャンセル</a>
+                        <a href="{{ url('/items')}}" class="btn btn-primary">登録キャンセル</a>
                     </div>
                 </form>
             </div>
