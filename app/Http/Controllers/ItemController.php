@@ -23,6 +23,7 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
+        
         // リクエストからキーワードを取得
         $keyword = $request->input('keyword', '');  // フリーワード
 
@@ -34,8 +35,11 @@ class ItemController extends Controller
         });
         $items = $query->get();  // 検索結果を取得
 
+
+
         // ビューにデータを渡す
-        return view('item.index', compact('items', 'keyword'));
+        return view('item.index', compact('items', 'keyword'));/*キーワード検索 */
+
         // $request->validate([
         //     'keyword' => 'nullable|string|max:255',
         // ]);
