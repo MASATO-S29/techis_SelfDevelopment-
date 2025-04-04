@@ -28,8 +28,8 @@ class ItemController extends Controller
 
     // 商品の絞り込み（キーワードで商品名や説明を検索）
     $items = Item::when($keyword, function($query, $keyword) {
-        return $query->where('name', 'type', '%' . $keyword . '%')  // 商品名に一致するキーワードを検索
-                     ->orWhere('detail','name', 'type', '%' . $keyword . '%');  // 商品説明にも一致するキーワードを検索
+        return $query->where('name', 'like','%' . $keyword . '%')  // 商品名に一致するキーワードを検索
+                     ->orWhere('detail', 'like','%' . $keyword . '%');  // 商品説明にも一致するキーワードを検索
     })
     ->get();  // 検索結果を取得
 
