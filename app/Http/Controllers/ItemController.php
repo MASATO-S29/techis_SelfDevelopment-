@@ -26,6 +26,7 @@ class ItemController extends Controller
         
         // リクエストからキーワードを取得
         $keyword = $request->input('keyword', '');  // フリーワード
+       
 
         // 商品の絞り込み（キーワードで商品名や説明を検索）
         $query = Item::when($keyword, function ($query, $keyword) {
@@ -33,6 +34,27 @@ class ItemController extends Controller
                 ->orWhere('type', 'like', '%' . $keyword . '%') // 商品説明にも一致するキーワードを検索
                 ->orWhere('detail', 'like', '%' . $keyword . '%');
         });
+        
+    $sortType = $request->input('sort','newest');
+
+        switch($sortType){
+            case 'oldest':
+                $query->orderBy('created_at','asc');
+                break;
+            case 'min_price':
+                $query->orderBy('price','min');
+                break;
+            case 'max_price':    
+                $query->orderBy('price','max');
+                break;
+            case 'newest':
+                $query->orderBy('created_at','desc');
+                break;
+            default:
+                $query->orderBy('created_at','desc');
+                break;
+        }
+
         $items = $query->get();  // 検索結果を取得
 
 
@@ -54,12 +76,14 @@ class ItemController extends Controller
         return view('items.index', compact('items'));
     }
 
+        
+
 
 
     /**
      * 商品登録
      */
-    public function add(Request $request)
+        public function add(Request $request)
     {
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
