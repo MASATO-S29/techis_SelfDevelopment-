@@ -24,20 +24,21 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         // リクエストからキーワードを取得
-    $keyword = $request->input('keyword', '');  // フリーワード
+        $keyword = $request->input('keyword', '');  // フリーワード
 
-    // 商品の絞り込み（キーワードで商品名や説明を検索）
-    $items = Item::when($keyword, function($query, $keyword) {
-        return $query->where('name', 'like','%' . $keyword . '%')  // 商品名に一致するキーワードを検索
-                     ->orWhere('detail', 'like','%' . $keyword . '%');  // 商品説明にも一致するキーワードを検索
-    })
-    ->get();  // 検索結果を取得
+        // 商品の絞り込み（キーワードで商品名や説明を検索）
+        $query = Item::when($keyword, function ($query, $keyword) {
+            return $query->where('name', 'like', '%' . $keyword . '%')  // 商品名に一致するキーワードを検索
+                ->orWhere('type', 'like', '%' . $keyword . '%') // 商品説明にも一致するキーワードを検索
+                ->orWhere('detail', 'like', '%' . $keyword . '%');
+        });
+        $items = $query->get();  // 検索結果を取得
 
-    // ビューにデータを渡す
-    return view('item.index', compact('items', 'keyword'));
-    $request->validate([
-        'keyword' => 'nullable|string|max:255',
-    ]);
+        // ビューにデータを渡す
+        return view('item.index', compact('items', 'keyword'));
+        // $request->validate([
+        //     'keyword' => 'nullable|string|max:255',
+        // ]);
 
         // 商品一覧取得
         $items = Item::all();
