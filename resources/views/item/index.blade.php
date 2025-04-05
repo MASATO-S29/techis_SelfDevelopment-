@@ -16,20 +16,10 @@
             <form action="{{ route('item.index') }}" method="GET">
                 <div class="form-group">
                     <!-- 検索 -->
-                    <!-- 価格帯 -->
-                    <div class="price-range">
-                        <label for="min-price">価格帯: </label>
-                        <input type="text" id="min-price" placeholder="最小価格">
-                        <span>円</span> ～
-                        <input type="text" id="max-price" placeholder="最大価格"> <span>円</span>
-                    </div>
-
-                    <div><!-- 並べ替え -->
-                        <select name="sort_by">
-                            <option value="price_asc" {{ request()->sort_by == 'price_asc' ? 'selected' : '' }}>安い順</option>
-                            <option value="price_desc" {{ request()->sort_by == 'price_desc' ? 'selected' : '' }}>高い順</option>
-                            <option value="name_asc" {{ request()->sort_by == 'name_asc' ? 'selected' : '' }}>昇順</option>
-                            <option value="name_desc" {{ request()->sort_by == 'name_desc' ? 'selected' : '' }}>降順</option>
+                    <div class="input-group"><!-- 並べ替え -->
+                        <select name="sort" class="form-select">
+                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>新着順</option>
+                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>古い順</option>
                         </select>
                     </div>
                     <label for="keyword">
@@ -55,7 +45,6 @@
                 <th>名前</th>
                 <th>種別</th>
                 <th>詳細</th>
-                <th>金額</th>
                 <th>削除</th>
                 <th>編集</th>
             </tr>
@@ -67,7 +56,6 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->type }}</td>
                 <td>{{ $item->detail }}</td>
-                <td>{{ $item->money }}</td>
                 <!-- 削除formの追加 -->
                 <td>
                     <form action="{{ url('items/delete') }}" method="POST"

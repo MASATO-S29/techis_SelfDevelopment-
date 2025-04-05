@@ -41,11 +41,6 @@
                             <label for="detail">詳細</label>
                             <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細"value="{{$item -> detail}}">
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="money">金額</label>
-                            <input type="text" class="form-control" id="money" name="money" placeholder="金額"value="{{$item -> money}}">
-                        </div> -->
                     </div>
 
                     <div class="card-footer">

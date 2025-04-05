@@ -41,12 +41,6 @@ class ItemController extends Controller
             case 'oldest':
                 $query->orderBy('created_at','asc');
                 break;
-            case 'min_price':
-                $query->orderBy('price','min');
-                break;
-            case 'max_price':    
-                $query->orderBy('price','max');
-                break;
             case 'newest':
                 $query->orderBy('created_at','desc');
                 break;
@@ -75,11 +69,7 @@ class ItemController extends Controller
         // 商品一覧ページに渡す
         return view('items.index', compact('items'));
     }
-
         
-
-
-
     /**
      * 商品登録
      */
@@ -98,7 +88,6 @@ class ItemController extends Controller
                 'name' => $request->name,
                 'type' => $request->type,
                 'detail' => $request->detail,
-                'money' => $request->money,
             ]);
 
             return redirect('/items');
@@ -128,7 +117,6 @@ class ItemController extends Controller
     {
         $item = Item::find($id);  // 編集対象の商品を取得
         $item->name = $request->name;  // 商品名の更新
-        $item->money = $request->money;  // 価格の更新
         $item->type = $request->type; /*種別の更新*/
         $item->detail = $request->detail; /*詳細の更新*/
         $item->save();  // データベースに保存
