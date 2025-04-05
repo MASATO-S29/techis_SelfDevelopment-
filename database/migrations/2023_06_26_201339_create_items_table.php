@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 100)->index();
             $table->string('type', 100)->nullable();
             $table->string('detail', 500)->nullable();
-            $table->integer('money');
+            // $table->integer('money');
             $table->timestamps();
         });
     }
